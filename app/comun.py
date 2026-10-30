@@ -1,5 +1,6 @@
 """Funciones compartidas de la app Olist: dirección de la API (desde st.secrets),
 llamadas con manejo de errores, y carga de los CSV precalculados."""
+import time
 from pathlib import Path
 
 import pandas as pd
@@ -27,8 +28,14 @@ def _get(url: str) -> dict:
     return r.json()
 
 
-def post_riesgo(pedido: dict):
-    return requests.post(f"{api_url()}/riesgo", json=pedido, timeout=90)
+def post_riesgo(pedido: dict, intentos: int = 4):
+    """Render responde 502/503/504 mientras despierta o reinicia la API: reintenta con espera creciente."""
+    with st.spinner("Consultando la API… (si estaba dormida puede tardar hasta un minuto)"):
+        for k in range(intentos):
+            r = requests.post(f"{api_url()}/riesgo", json=pedido, timeout=90)
+            if r.status_code not in (502, 503, 504) or k == intentos - 1:
+                return r
+            time.sleep(5 * (k + 1))
 
 
 def estado_api() -> bool:

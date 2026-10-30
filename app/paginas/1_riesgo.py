@@ -107,7 +107,11 @@ with c2:
             res, error = consultar(pedido)
         except requests.RequestException:
             st.error("La API no respondió a tiempo. Intenta de nuevo en un minuto."); st.stop()
-        if error is not None:
+        if error is not None and error.status_code in (502, 503, 504):
+            st.error(f"La API no está disponible en Render (código {error.status_code}). Puede estar "
+                     "arrancando o haberse reiniciado: espera un minuto y vuelve a intentar. Si se repite, "
+                     "revisa los Logs del servicio en Render.")
+        elif error is not None:
             try:                                             # FastAPI responde JSON; Render/errores 500, texto o HTML
                 detalle = error.json().get("detail", "")
             except ValueError:
