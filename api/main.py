@@ -10,7 +10,7 @@ from typing import Optional
 
 import joblib
 import pandas as pd
-from fastapi import FastAPI
+from fastapi import FastAPI, HTTPException
 from pydantic import BaseModel, Field
 from xgboost import XGBClassifier
 
@@ -53,8 +53,11 @@ def estado():
 @app.post("/riesgo")
 def riesgo(pedido: Pedido):
     fila = pd.DataFrame([pedido.model_dump()])
-    X = preprocesador.transform(fila)
-    prob = float(modelo.predict_proba(X)[:, 1][0])
+    try:
+        X = preprocesador.transform(fila)
+        prob = float(modelo.predict_proba(X)[:, 1][0])
+    except Exception as e:                       # devolver la causa en JSON en vez de un 500 en texto plano
+        raise HTTPException(status_code=500, detail=f"{type(e).__name__}: {e}")
     return {"probabilidad": round(prob, 4),
             "riesgo_alto": bool(prob >= UMBRAL),
             "umbral": round(UMBRAL, 4)}

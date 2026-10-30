@@ -108,7 +108,11 @@ with c2:
         except requests.RequestException:
             st.error("La API no respondió a tiempo. Intenta de nuevo en un minuto."); st.stop()
         if error is not None:
-            st.error(f"La API rechazó el pedido (código {error.status_code}): {error.json().get('detail','')}")
+            try:                                             # FastAPI responde JSON; Render/errores 500, texto o HTML
+                detalle = error.json().get("detail", "")
+            except ValueError:
+                detalle = error.text[:300]
+            st.error(f"La API rechazó el pedido (código {error.status_code}): {detalle}")
         else:
             prob, umb = res["probabilidad"], res["umbral"]
             alto = res["riesgo_alto"]
