@@ -8,6 +8,10 @@ Local:  python -m uvicorn main:app --reload    |    Docs: http://localhost:8000/
 import json, os
 from typing import Optional
 
+# Render (plan gratuito) ve todas las CPU del host: sin esto OpenMP/XGBoost lanza decenas de hilos,
+# se queda sin memoria y el proceso muere a mitad del pedido (502). Debe ir antes de importar xgboost.
+os.environ.setdefault("OMP_NUM_THREADS", "1")
+
 import joblib
 import pandas as pd
 from fastapi import FastAPI, HTTPException
@@ -20,6 +24,7 @@ AQUI = os.path.dirname(os.path.abspath(__file__))
 preprocesador = joblib.load(os.path.join(AQUI, "preprocesador.joblib"))   # crear_variables + ColumnTransformer
 modelo = XGBClassifier()
 modelo.load_model(os.path.join(AQUI, "modelo_xgb.json"))                  # formato nativo portable
+modelo.set_params(n_jobs=1)                                               # un solo hilo al predecir
 UMBRAL = json.load(open(os.path.join(AQUI, "umbral.json")))["umbral"]
 
 app = FastAPI(title="Riesgo de mala reseña · Olist", version="1.0")
