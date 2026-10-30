@@ -46,8 +46,8 @@ class Pedido(BaseModel):
     fotos_promedio: Optional[float] = Field(default=None, ge=0)
     categoria: Optional[str] = None
     estado_vendedor: str
-    tipo_pago: str
-    cuotas_max: int = Field(ge=0)
+    tipo_pago: Optional[str] = None                         # hay pedidos sin registro de pago
+    cuotas_max: Optional[int] = Field(default=None, ge=0)
 
 
 @app.get("/")

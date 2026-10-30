@@ -91,8 +91,8 @@ COLOR = {
 }
 COLORES_GRUPO = ["#2348F2", "#F5B400", "#E5484D", "#12A594", "#7B61FF", "#5B6478"]
 # Cifras de la validación por fecha (salen del notebook; son las mismas de la Ficha del modelo)
-FICHA = {"precision_10": 0.666, "regla_retraso": 0.621, "azar": 0.146, "umbral": 0.2708,
-         "mejora_azar": 4.55, "mejora_regla": 1.07}   # mejoras tal como las imprime el notebook
+FICHA = {"precision_10": 0.663, "regla_retraso": 0.621, "azar": 0.146, "umbral": 0.2693,
+         "mejora_azar": 4.53, "mejora_regla": 1.07}   # mejoras tal como las imprime el notebook
 
 COLOR_SENTIMIENTO = {"negative": "#E5484D", "neutral": "#8A93A6", "positive": "#12A594"}
 NOMBRE_SENTIMIENTO = {"negative": "Negativo", "neutral": "Neutro", "positive": "Positivo"}

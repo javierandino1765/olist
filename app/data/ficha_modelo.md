@@ -14,8 +14,8 @@ solo funciona una vez que el pedido ya fue entregado.
 ## 2. Datos
 
 - Fuente: datos públicos de Olist (comercio electrónico de Brasil), esquema `final` del curso.
-- Periodo de entrenamiento: pedidos comprados entre **octubre 2016 y mayo 2018**.
-- Tamaño: **77,303 pedidos** entregados y con reseña (una fila por pedido).
+- Periodo de entrenamiento: pedidos comprados entre **septiembre 2016 y mayo 2018**.
+- Tamaño: **77,304 pedidos** entregados y con reseña (una fila por pedido).
 - Se excluyó: pedidos no entregados o sin reseña, y los comprados **desde el 1 de junio de 2018**
   (los reserva el docente para evaluar; así el modelo se entrena con el pasado y se prueba con el futuro).
 
@@ -23,9 +23,9 @@ solo funciona una vez que el pedido ya fue entregado.
 
 Evaluado **por fecha** (se entrena con los pedidos más antiguos y se valida con los más recientes):
 
-- **Precisión en el 10% de mayor riesgo: 0.666.** De cada 10 clientes que el modelo marca como más
-  riesgosos, cerca de **7 iban de verdad a dejar mala reseña**.
-- Contra el **azar** (llamar al 10% al azar), que acierta **0.146**: casi **×4.5 mejor**.
+- **Precisión en el 10% de mayor riesgo: 0.663.** De cada 10 clientes que el modelo marca como más
+  riesgosos, cerca de **7 (6.6) iban de verdad a dejar mala reseña**.
+- Contra el **azar** (llamar al 10% al azar), que acierta **0.146**: **×4.5 mejor** (de cada 10 llamadas al azar, solo 1 o 2 acertarían).
 - Contra la **regla del retraso** (llamar a los más atrasados), que acierta **0.621**: le gana, pero
   **por poco** (×1.07). Es honesto decirlo: el retraso ya explica gran parte de las malas reseñas; el
   modelo aporta al sumarle la geografía, la categoría y el tamaño del pedido.
@@ -37,7 +37,7 @@ Evaluado **por fecha** (se entrena con los pedidos más antiguos y se valida con
   al azar.
 - Entrenado con 2016–2018: no conoce cambios de temporada, campañas ni eventos nuevos.
 - No usa el **texto** de la reseña (eso ocurre después de la entrega); el texto se analiza aparte (Parte 4).
-- La precisión que calcule el docente con junio–agosto 2018 **será distinta** a 0.666: el periodo oculto
+- La precisión que calcule el docente con junio–agosto 2018 **será distinta** a 0.663: el periodo oculto
   es otro.
 
 ## 5. A quién afecta un error

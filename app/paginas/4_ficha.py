@@ -11,7 +11,7 @@ comun.encabezado("Ficha del modelo",
 
 # Mismas cifras de siempre (salen del notebook: validación por fecha)
 comun.banda_kpis([
-    {"lab": "Precisión en el 10% de mayor riesgo", "val": "0.666",
+    {"lab": "Precisión en el 10% de mayor riesgo", "val": "0.663",
      "nota": '<span class="ol-pill up">×4.5 vs azar</span>'},
     {"lab": "Regla del retraso", "val": "0.621",
      "nota": '<span class="ol-pill flat">el modelo la supera (×1.07)</span>'},
