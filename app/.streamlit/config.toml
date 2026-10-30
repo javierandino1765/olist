@@ -1,0 +1,44 @@
+# Tema "Olist": azul de la marca, barra lateral azul marino, amarillo de estrellas y rojo de riesgo.
+# Tipografía Plus Jakarta Sans (incluida en app/static, no depende de internet).
+# Función avanzada: .streamlit/config.toml
+
+[theme]
+base = "light"
+primaryColor = "#2348F2"
+backgroundColor = "#F4F6FB"
+secondaryBackgroundColor = "#E9EDF6"
+textColor = "#0B1736"
+borderColor = "#DCE1EC"
+dataframeBorderColor = "#E4E8F1"
+dataframeHeaderBackgroundColor = "#F4F6FB"
+showWidgetBorder = true
+baseRadius = "0.6rem"
+font = "Plus Jakarta Sans"
+headingFont = "Plus Jakarta Sans"
+headingFontWeights = [800, 700, 700, 700, 700, 700]
+metricValueFontSize = "2rem"
+metricValueFontWeight = 700
+chartCategoricalColors = ["#2348F2", "#F5B400", "#E5484D", "#12A594", "#7B61FF", "#5B6478"]
+greenColor = "#12A594"
+redColor = "#E5484D"
+blueColor = "#2348F2"
+
+[[theme.fontFaces]]
+family = "Plus Jakarta Sans"
+url = "app/static/PlusJakartaSans.ttf"
+weight = "200 800"
+
+[theme.sidebar]
+backgroundColor = "#0B1736"
+secondaryBackgroundColor = "#17264D"
+textColor = "#E4E9F5"
+primaryColor = "#F5B400"
+borderColor = "#25345C"
+font = "Plus Jakarta Sans"
+headingFont = "Plus Jakarta Sans"
+
+[server]
+enableStaticServing = true
+
+[client]
+toolbarMode = "minimal"

@@ -1,0 +1,21 @@
+{
+  "silueta_por_k": {
+    "2": 0.194,
+    "3": 0.194,
+    "4": 0.199,
+    "5": 0.178,
+    "6": 0.184,
+    "7": 0.19
+  },
+  "k": 4,
+  "pca_var_pct": 60.0,
+  "features": [
+    "pedidos",
+    "ventas",
+    "ticket_medio",
+    "n_categorias",
+    "flete_relativo",
+    "tasa_retraso",
+    "dias_entrega_prom"
+  ]
+}
