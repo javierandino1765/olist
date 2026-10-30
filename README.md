@@ -7,9 +7,9 @@ en Render y una app de Streamlit que la consume.
 
 ## Links
 
-- App (Streamlit): ver `app_url.txt`
-- API (Render), su `/docs` debe abrir: ver `api_url.txt`
-- Repositorio: `https://github.com/<completar>`
+- App (Streamlit): ver `https://avgbsjf2bba9umpopq65m4.streamlit.app/riesgo`
+- API (Render): `https://olist-bs8i.onrender.com`
+- Repositorio: `https://github.com/javierandino1765/olist`
 
 ## Estructura
 

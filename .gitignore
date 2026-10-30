@@ -1,0 +1,11 @@
+# Documento de apoyo personal, no se publica
+EXPLICACION_Proyecto_Final.md
+
+# Python
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# Secretos de Streamlit (la URL de la API va en Secrets de Streamlit Cloud)
+.streamlit/secrets.toml
